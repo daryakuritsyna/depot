@@ -15,11 +15,13 @@
             .col-sm-2.price
               = product.price
             .col-sm-2
-              = form.input_field :quantity, as: :integer
+              = form.input :quantity, label: false, as: :integer
             .col-sm-2
               = link_to order_path(id: product), id: "delete_#{product.id}", remote: true, method: :delete do
                 | &times
 
       = f.input :email
+      = f.input :phone
+      = f.input :address
       = f.button :button
 
