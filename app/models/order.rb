@@ -1,5 +1,4 @@
 class Order < ActiveRecord::Base
-  attr_accessor :products_attributes
   has_many :products, class_name: 'OrderProduct'
   validates :email, presence: true, format: /@/
   validates :phone, presence: true, format: /\d/
@@ -11,8 +10,8 @@ class Order < ActiveRecord::Base
   private
 
   def cal_total
-    products_attributes.each_value do |pair|
-      self.total += Product.find(pair[:product_id]).price.to_f * pair[:quantity].to_i
+    products.each do |product|
+      self.total += Product.find(product.product_id).price * product.quantity
     end
   end
 end
