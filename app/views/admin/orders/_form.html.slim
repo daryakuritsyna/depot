@@ -1,0 +1,5 @@
+= simple_form_for [:admin, order], remote: true do |f|
+  = f.input :email
+  = f.input :phone
+  = f.input :address
+  = f.button :button, "Update", class: 'btn-primary'
