@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   def update
     if order.update(order_params)
       session[:products] = []
+      OrderMailer.new_order(order.id).deliver_later
     else
       render :new
     end
