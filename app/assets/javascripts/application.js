@@ -27,6 +27,12 @@ $(document).on('change', 'input#product_image', function(){
   reader.readAsDataURL(input.files[0]);
 })
 
+$(document).on('ready page:load', function(){
+  $('.new').addClass( "alert alert-danger" )
+  $('.done').addClass( "alert alert-success" )
+  $('.process').addClass( "alert alert-warning" )
+})
+
 $(document).on('keyup', '#_search', function(){
   $(this.form).trigger('submit.rails');
 })

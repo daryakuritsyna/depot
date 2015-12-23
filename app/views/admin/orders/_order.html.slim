@@ -1,0 +1,7 @@
+tr.order class='#{order.status}'
+  td= order.status.capitalize
+  td= link_to order.created_at.to_time, admin_order_path(order.id)
+  td= number_to_currency(order.total)
+  td= order.email
+  td= order.phone
+  td= order.address

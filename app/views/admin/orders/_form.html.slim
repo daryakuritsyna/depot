@@ -1,0 +1,7 @@
+= simple_form_for [:admin, order], remote: true do |f|
+  = f.input :email, disabled: true
+  = f.input :phone, disabled: true
+  = f.input :address
+  = f.input :status, collection: ['new', 'done', 'in process'],
+            prompt: 'Select status', selected: order.status
+  = f.button :button, "Update", class: 'btn-primary'
