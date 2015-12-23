@@ -10,8 +10,6 @@ class Order < ActiveRecord::Base
   private
 
   def cal_total
-    products.each do |product|
-      self.total += Product.find(product.product_id).price * product.quantity
-    end
+    products.each { |product| self.total += (product.price * product.quantity) }
   end
 end
