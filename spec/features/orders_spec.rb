@@ -9,7 +9,7 @@ describe 'Orders' do
       first('.product-link').click
       click_link 'Add to cart'
       expect(page).to have_content('Cart 1')
-      click_link 'Cart'
+      find('.glyphicon-shopping-cart').trigger(:click)
       expect(page).to have_content("#{product.price}")
       fill_in 'order_products_attributes_0_quantity', with: '7'
       expect(page).to have_content("Order total: #{product.price * 7}")
@@ -18,7 +18,7 @@ describe 'Orders' do
       visit '/'
       first('.product-link').click
       click_link 'Add to cart'
-      click_link 'Cart'
+      find('.glyphicon-shopping-cart').trigger(:click)
       find_link("delete_#{product.id}").trigger(:click)
       expect(page).not_to have_content('Cart 1')
     end
